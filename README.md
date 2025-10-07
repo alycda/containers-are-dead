@@ -70,7 +70,7 @@ Copyright © 2024- Mainmatter GmbH (https://mainmatter.com), released under the
        exercise: fix an http endpoint to return random numbers
      - 2.2: HTTP handlers proper
        goal: understand error handling in wasm components
-       exercise: integrate the expression evaulator to evaluate POSTed expressions
+       exercise: integrate the expression evaluator to evaluate POSTed expressions
      - 2.3: Key Value Store
        goal: demonstrate how simple values can be stored across calls and the usefulness of that. demonstrate limitations. but emphasize cross-platform support.
        exercise: expand expression evaluator to support assigning values to variables. Store the variables in the spin-sdk KV store.

@@ -96,7 +96,7 @@ Here's what each section of our compiled module does:
 
 You may have noticed that - unlike traditional assembly languages - WebAssembly is **strongly typed**. Every value has a specific type i32, i64, f32, f64, or reference types), all functions declare their signatures (in the example above `$it_works` has function type `$t0` which resolves to `(func (result i32))` - a function accepting no arguments and returning one `i32`).
 
-You may also haved noticed the `$__stack_pointer` global and asked yourself why it exists, I thought the WebAssembly stack was implicit and managed by the host??
+You may also have noticed the `$__stack_pointer` global and asked yourself why it exists, I thought the WebAssembly stack was implicit and managed by the host??
 
 ### Key Differences from Traditional Assembly
 

@@ -133,7 +133,7 @@ It has generates a `bindings.rs` file in your `src` folder. This file looks pret
 
 - bindings to all interfaces we imported are available as submodules. In our case that is `bindings::random::random` to access the random number interface.
 - `bindings::Guest` is a `trait` that we have to implement in order to be compliant with the interface we promised above.
-- `bindings::export` is a macro that lets us declare a Rust type implementing `Guest` as _the_ implementation for this interface. You call it like so `bindings::export!(<YourTypeName> with_types_in bindings)` (substitue `<YourTypeName>` for the actualy name of your type).
+- `bindings::export` is a macro that lets us declare a Rust type implementing `Guest` as _the_ implementation for this interface. You call it like so `bindings::export!(<YourTypeName> with_types_in bindings)` (substitute `<YourTypeName>` for the actually name of your type).
 
 ## Exercise
 

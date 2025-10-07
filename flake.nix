@@ -40,6 +40,7 @@
             # devtools
             mdbook
             jujutsu
+            typos
           ];
         };
       }
