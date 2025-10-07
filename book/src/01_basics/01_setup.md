@@ -46,15 +46,15 @@ and instructs the compiler to emit a special Rust-flavored static library that i
 
 ## WebAssembly Binary Format
 
-WebAssembly is a simple, portable abstract machine and an executable format. It is a low-level  enough to allow languages like C/C++ and Rust to run with near-native performance while providing the strong isolation and sandboxing that is required to run untrusted third-party code on the Web.
+WebAssembly is a simple, portable abstract machine and an executable format. It is a low-level enough to allow languages like C/C++ and Rust to run with near-native performance while providing the strong isolation and sandboxing that is required to run untrusted third-party code on the Web.
 
 It has gained popularity outside the browser in recent years due to its ability to run on a variety of platforms and its ability to be embedded in a variety of contexts. It is used anywhere between, [operating systems](https://github.com/JonasKruckenberg/k23), [font files](https://github.com/harfbuzz/harfbuzz/blob/main/docs/wasm-shaper.md), [database files](https://db.cs.cmu.edu/papers/2025/zeng-sigmod2025.pdf), and - most relevant for today - serverless cloud hosting providers.
 
-WebAssembly operates as a stack-based virtual machine that executes bytecode instructions that manipulate an implicit operand stack - function parameters are pushed onto this stack, operations consume values from the stack, and results are pushed back. This stack is managed by the host and *not* visible directly to the guest code running in the sandbox.
+WebAssembly operates as a stack-based virtual machine that executes bytecode instructions that manipulate an implicit operand stack - function parameters are pushed onto this stack, operations consume values from the stack, and results are pushed back. This stack is managed by the host and _not_ visible directly to the guest code running in the sandbox.
 
 The VM enforces strong isolation through its linear memory model: each WebAssembly instance has access only to its own contiguous, bounded memory space, with no ability to access host memory directly. All interactions with the host environment must go through explicitly declared imports and exports. This design enables WebAssembly to run untrusted code safely.
 
-This also explains why we had to instruct Rust to emit a dynamic library: All WebAssembly code is loaded and linked dynamically by the host. All WebAssembly modules *are* shared libraries!
+This also explains why we had to instruct Rust to emit a dynamic library: All WebAssembly code is loaded and linked dynamically by the host. All WebAssembly modules _are_ shared libraries!
 
 ### Key Concepts
 
@@ -62,7 +62,7 @@ This also explains why we had to instruct Rust to emit a dynamic library: All We
 - **Memory**: A resizable memory region that contains the linear array of bytes read and written by WebAssembly's low-level memory access instructions. Essentially a `Vec<u8>`.
 - **Table**: A resizable typed array of references (e.g., to functions) that could not otherwise be stored as raw bytes in Memory (for safety and portability reasons).
 - **Global**: A global value, either mutable or immutable. These are used as global variables by code or e.g. to communicate configuration options from the host to instances.
-- **Instance**: A Module paired with all the state it uses at runtime including a Memory, Table, and set of imported values. This instance is *stateful* and is similar to a shared library loaded into memory.
+- **Instance**: A Module paired with all the state it uses at runtime including a Memory, Table, and set of imported values. This instance is _stateful_ and is similar to a shared library loaded into memory.
 
 ## Inspect the WebAssembly Module
 
@@ -100,15 +100,16 @@ You may also have noticed the `$__stack_pointer` global and asked yourself why i
 
 ### Key Differences from Traditional Assembly
 
-Unlike traditional assembly languages, WebAssembly is **strongly typed**. Every value has a specific type (i32, i64, f32, f64, or reference types). Every instruction is typed as well, for example there is a `i64.add` and an `i32.add` instruction, attempting pass anything but two `i64` values to an `i64.add` instruction will result in an error. This is enforced by the WebAssembly runtime *ahead of time*, programs that don't pass the validation step will not even begin execution. This prevents many classes of bugs that are common in native assembly, e.g. `x86` is happy to interpret your `f64` as an `i64` and do integer arithmetic with it.
+Unlike traditional assembly languages, WebAssembly is **strongly typed**. Every value has a specific type (i32, i64, f32, f64, or reference types). Every instruction is typed as well, for example there is a `i64.add` and an `i32.add` instruction, attempting pass anything but two `i64` values to an `i64.add` instruction will result in an error. This is enforced by the WebAssembly runtime _ahead of time_, programs that don't pass the validation step will not even begin execution. This prevents many classes of bugs that are common in native assembly, e.g. `x86` is happy to interpret your `f64` as an `i64` and do integer arithmetic with it.
 
 ### The Stack Pointer Global
 
 WebAssembly technically has 2 different stacks:
+
 1. The operand stack where instructions pop and pushed values.
 2. The call stack where function-local variables are stored.
 
-Together they allow *almost* all programs to be compiled to WebAssembly, with one exception: Some languages allow you to take the *address* of a stack allocated variable. This can't work since the WebAssembly stack is managed by the host and not directly accessible from WebAssembly code.
+Together they allow _almost_ all programs to be compiled to WebAssembly, with one exception: Some languages allow you to take the _address_ of a stack allocated variable. This can't work since the WebAssembly stack is managed by the host and not directly accessible from WebAssembly code.
 
 ```rust
 let x = 42;
@@ -117,4 +118,4 @@ let x = 42;
 println!("{}", &raw const x);
 ```
 
-Languages that allow this, like Rust, maintain their own small stack in WebAssembly *linear memory* for the values that a program needs to take the value of. The `__stack_pointer` global tracks the current position in this software-managed stack.
+Languages that allow this, like Rust, maintain their own small stack in WebAssembly _linear memory_ for the values that a program needs to take the value of. The `__stack_pointer` global tracks the current position in this software-managed stack.

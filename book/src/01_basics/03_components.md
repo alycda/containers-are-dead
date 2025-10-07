@@ -25,7 +25,7 @@ interface random {
 
 The above interface definition is an excerpt of the real `wasi:random/random` interface that allows WebAssembly access to cryptographically secure random numbers from the host. Notice couple important pieces:
 
-- `package wasi:random@0.2.7;` declares the _namespace_ (`wasi`) and _name_ (`random`) of the current package, as well as the current versionn (`0.2.7`).
+- `package wasi:random@0.2.7;` declares the _namespace_ (`wasi`) and _name_ (`random`) of the current package, as well as the current version (`0.2.7`).
 - `interface` denotes a collection of functions and associated types and defines behaviour shareable with the outside world. You can think of it as a `trait` in Rust.
 - `get-random-u64: func() -> u64;` declares that - to conform to the `random` interface - one must export a function called `get-random-u64` that takes no arguments and returns a single `u64`.
 - `@since(version = 0.2.0)` is a _feature gate_ that indicated the annotated function is _stable_ since package version `0.2.0`. The component model has a first-class story for evolving and updating interfaces.

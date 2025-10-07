@@ -41,6 +41,7 @@
             mdbook
             jujutsu
             typos
+            dprint
           ];
         };
       }
