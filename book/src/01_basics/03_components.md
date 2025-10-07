@@ -25,7 +25,7 @@ interface random {
 
 The above interface definition is an excerpt of the real `wasi:random/random` interface that allows WebAssembly access to cryptographically secure random numbers from the host. Notice couple important pieces:
 
-- `package wasi:random@0.2.7;` declares the _namespace_ (`wasi`) and _name_ (`random`) of the current package, as well as the current versionn (`0.2.7`).
+- `package wasi:random@0.2.7;` declares the _namespace_ (`wasi`) and _name_ (`random`) of the current package, as well as the current version (`0.2.7`).
 - `interface` denotes a collection of functions and associated types and defines behaviour shareable with the outside world. You can think of it as a `trait` in Rust.
 - `get-random-u64: func() -> u64;` declares that - to conform to the `random` interface - one must export a function called `get-random-u64` that takes no arguments and returns a single `u64`.
 - `@since(version = 0.2.0)` is a _feature gate_ that indicated the annotated function is _stable_ since package version `0.2.0`. The component model has a first-class story for evolving and updating interfaces.
@@ -133,7 +133,7 @@ It has generates a `bindings.rs` file in your `src` folder. This file looks pret
 
 - bindings to all interfaces we imported are available as submodules. In our case that is `bindings::random::random` to access the random number interface.
 - `bindings::Guest` is a `trait` that we have to implement in order to be compliant with the interface we promised above.
-- `bindings::export` is a macro that lets us declare a Rust type implementing `Guest` as _the_ implementation for this interface. You call it like so `bindings::export!(<YourTypeName> with_types_in bindings)` (substitue `<YourTypeName>` for the actualy name of your type).
+- `bindings::export` is a macro that lets us declare a Rust type implementing `Guest` as _the_ implementation for this interface. You call it like so `bindings::export!(<YourTypeName> with_types_in bindings)` (substitute `<YourTypeName>` for the actually name of your type).
 
 ## Exercise
 

@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
   schedule:
     # First day of a month
-    - cron: '0 0 1 * *'
+    - cron: "0 0 1 * *"
 
 jobs:
   build:
@@ -32,9 +32,9 @@ jobs:
         with:
           fail: true
           args: |
-            --exclude-loopback 
-            --require-https 
-            --no-progress 
+            --exclude-loopback
+            --require-https
+            --no-progress
             book/book
       # Upload the book as an artifact
       - uses: actions/upload-artifact@v4

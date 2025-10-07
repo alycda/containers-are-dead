@@ -347,6 +347,9 @@ checksum = "b05b61dc5112cbb17e4b6cd61790d9845d13888356391624cbe7e41efeac1e75"
 [[package]]
 name = "components"
 version = "0.1.0"
+dependencies = [
+ "wit-bindgen-rt 0.44.0",
+]
 
 [[package]]
 name = "core-foundation-sys"
@@ -3094,6 +3097,12 @@ dependencies = [
  "futures",
  "once_cell",
 ]
+
+[[package]]
+name = "wit-bindgen-rt"
+version = "0.44.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "653c85dd7aee6fe6f4bded0d242406deadae9819029ce6f7d258c920c384358a"
 
 [[package]]
 name = "wit-bindgen-rust"

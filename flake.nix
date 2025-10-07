@@ -40,6 +40,8 @@
             # devtools
             mdbook
             jujutsu
+            typos
+            dprint
           ];
         };
       }
