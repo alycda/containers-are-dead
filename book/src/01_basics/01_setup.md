@@ -2,7 +2,7 @@
 
 Don't jump ahead!\
 Complete the exercise for the previous section before you start this one.\
-It's located in `exercises/01_intro/00_welcome`, in the [course GitHub's repository](https://github.com/mainmatter/containers-are-dead).\
+It's located in `exercises/01_basics/00_welcome`, in the [course GitHub's repository](https://github.com/mainmatter/containers-are-dead).\
 Use [`wr`](00_welcome.md#wr-the-workshop-runner) to start the course and verify your solutions.
 
 </div>
