@@ -2,7 +2,7 @@
 
 Welcome to **"Containers Are Dead - Long Live WebAssembly"**!
 
-> In this course, we will explore the concept of containers and how they are being replaced by WebAssembly. We will cover the basics of WebAssembly, including its architecture and how it can be used to create lightweight, portable, and efficient applications. We will also discuss the benefits of using WebAssembly over traditional container technologies, such as Docker and Kubernetes.
+In this course, we will explore the concept of containers and how they are being replaced by WebAssembly. We will cover the basics of WebAssembly, including its architecture and how it can be used to create lightweight, portable, and efficient applications.
 
 We assume you are familiar with the basics of Rust but we will provide brief explanations and references whenever we rely on advanced features.
 
