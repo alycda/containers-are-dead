@@ -1,0 +1,5 @@
+validate:
+    wr check
+
+disassemble:
+    curl https://webassembly.github.io/wabt/demo/wasm2wat/
