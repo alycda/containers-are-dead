@@ -1,0 +1,9 @@
+(module $setup.wasm
+  (type $t0 (func (result i32)))
+  (func $it_works (export "it_works") (type $t0) (result i32)
+    (i32.const 1))
+  (table $T0 1 1 funcref)
+  (memory $memory (export "memory") 16)
+  (global $__stack_pointer (mut i32) (i32.const 1048576))
+  (global $__data_end (export "__data_end") i32 (i32.const 1048576))
+  (global $__heap_base (export "__heap_base") i32 (i32.const 1048576)))
